@@ -80,6 +80,7 @@ interface ExternalProjects {
     description?: string;
     imageUrl?: string;
     link: string;
+    skills?: string[];
   }[];
 }
 
@@ -206,6 +207,16 @@ interface Social {
    * Email
    */
   email?: string;
+
+  /**
+   * LeetCode username
+   */
+  leetcode?: string;
+
+  /**
+   * GeeksForGeeks username
+   */
+  geeksforgeeks?: string;
 }
 
 interface Resume {
@@ -221,6 +232,10 @@ interface Experience {
   from: string;
   to: string;
   companyLink?: string;
+  description?: string;
+  technologies?: string[];
+  achievements?: string[];
+  location?: string;
 }
 
 interface Certification {
@@ -235,6 +250,10 @@ interface Education {
   degree?: string;
   from: string;
   to: string;
+  gpa?: string;
+  percentage?: string;
+  grade?: string;
+  location?: string;
 }
 
 interface Publication {
@@ -244,6 +263,54 @@ interface Publication {
   authors?: string;
   link?: string;
   description?: string;
+}
+
+interface ResearchExperience {
+  title: string;
+  institution?: string;
+  supervisor?: string;
+  from: string;
+  to: string;
+  description?: string;
+  link?: string;
+  imageUrl?: string;
+}
+
+interface Hackathon {
+  title: string;
+  organizer?: string;
+  position?: string;
+  date: string;
+  description?: string;
+  link?: string;
+  imageUrl?: string;
+}
+
+interface Contact {
+  /**
+   * Email address
+   */
+  email?: string;
+
+  /**
+   * Phone number
+   */
+  phone?: string;
+
+  /**
+   * Location (city, country)
+   */
+  location?: string;
+
+  /**
+   * LinkedIn username
+   */
+  linkedin?: string;
+
+  /**
+   * Preferred contact methods
+   */
+  preferredContact?: string[];
 }
 
 interface GoogleAnalytics {
@@ -403,6 +470,21 @@ interface Config {
    * Publication list
    */
   publications?: Array<Publication>;
+
+  /**
+   * Research Experience list
+   */
+  researchExperiences?: Array<ResearchExperience>;
+
+  /**
+   * Hackathons list
+   */
+  hackathons?: Array<Hackathon>;
+
+  /**
+   * Contact information
+   */
+  contact?: Contact;
 
   /**
    * Resume

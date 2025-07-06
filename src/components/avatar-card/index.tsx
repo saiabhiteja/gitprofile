@@ -1,13 +1,17 @@
+import React, { useState } from 'react';
 import { FALLBACK_IMAGE } from '../../constants';
 import { Profile } from '../../interfaces/profile';
 import { skeleton } from '../../utils';
 import LazyImage from '../lazy-image';
+import ContactModal from '../contact-modal';
 
 interface AvatarCardProps {
   profile: Profile | null;
   loading: boolean;
   avatarRing: boolean;
   resumeFileUrl?: string;
+  email?: string;
+  linkedin?: string;
 }
 
 /**
@@ -23,7 +27,18 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
   loading,
   avatarRing,
   resumeFileUrl,
+  email,
+  linkedin,
 }): JSX.Element => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleContactClick = () => {
+    setIsContactModalOpen(true);
+  };
+
+  const closeContactModal = () => {
+    setIsContactModalOpen(false);
+  };
   return (
     <div className="card shadow-lg compact bg-base-100">
       <div className="grid place-items-center py-8">
@@ -76,23 +91,45 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
               : profile.bio}
           </div>
         </div>
-        {resumeFileUrl &&
-          (loading ? (
-            <div className="mt-6">
-              {skeleton({ widthCls: 'w-40', heightCls: 'h-8' })}
-            </div>
-          ) : (
-            <a
-              href={resumeFileUrl}
-              target="_blank"
-              className="btn btn-outline btn-sm text-xs mt-6 opacity-50"
-              download
-              rel="noreferrer"
-            >
-              Download Resume
-            </a>
-          ))}
+        <div className="flex flex-col gap-2 mt-6">
+          {resumeFileUrl &&
+            (loading ? (
+              <div>
+                {skeleton({ widthCls: 'w-40', heightCls: 'h-8' })}
+              </div>
+            ) : (
+              <a
+                href={resumeFileUrl}
+                target="_blank"
+                className="btn btn-outline btn-sm text-xs opacity-50"
+                download
+                rel="noreferrer"
+              >
+                Download Resume
+              </a>
+            ))}
+          {(email || linkedin) &&
+            (loading ? (
+              <div>
+                {skeleton({ widthCls: 'w-40', heightCls: 'h-8' })}
+              </div>
+            ) : (
+              <button
+                onClick={handleContactClick}
+                className="btn btn-primary btn-sm text-xs"
+              >
+                Contact Me
+              </button>
+            ))}
+        </div>
       </div>
+      
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={closeContactModal}
+        email={email}
+        linkedin={linkedin}
+      />
     </div>
   );
 };

@@ -30,6 +30,8 @@ import ExternalProjectCard from './external-project-card';
 import BlogCard from './blog-card';
 import Footer from './footer';
 import PublicationCard from './publication-card';
+import ResearchExperienceCard from './research-experience-card';
+import HackathonCard from './hackathon-card';
 
 /**
  * Renders the GitProfile component.
@@ -211,6 +213,8 @@ const GitProfile = ({ config }: { config: Config }) => {
                       loading={loading}
                       avatarRing={sanitizedConfig.themeConfig.displayAvatarRing}
                       resumeFileUrl={sanitizedConfig.resume.fileUrl}
+                      email={sanitizedConfig.contact?.email}
+                      linkedin={sanitizedConfig.contact?.linkedin}
                     />
                     <DetailsCard
                       profile={profile}
@@ -246,6 +250,17 @@ const GitProfile = ({ config }: { config: Config }) => {
                 </div>
                 <div className="lg:col-span-2 col-span-1">
                   <div className="grid grid-cols-1 gap-6">
+                    {sanitizedConfig.projects.external.projects.length !==
+                      0 && (
+                      <ExternalProjectCard
+                        loading={loading}
+                        header={sanitizedConfig.projects.external.header}
+                        externalProjects={
+                          sanitizedConfig.projects.external.projects
+                        }
+                        googleAnalyticId={sanitizedConfig.googleAnalytics.id}
+                      />
+                    )}
                     {sanitizedConfig.projects.github.display && (
                       <GithubProjectCard
                         header={sanitizedConfig.projects.github.header}
@@ -256,21 +271,26 @@ const GitProfile = ({ config }: { config: Config }) => {
                         googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
                       />
                     )}
+                    {sanitizedConfig.researchExperiences.length !== 0 && (
+                      <ResearchExperienceCard
+                        loading={loading}
+                        header="Research Experience"
+                        researchExperiences={sanitizedConfig.researchExperiences}
+                        googleAnalyticId={sanitizedConfig.googleAnalytics.id}
+                      />
+                    )}
+                    {sanitizedConfig.hackathons.length !== 0 && (
+                      <HackathonCard
+                        loading={loading}
+                        header="Hackathons & Competitions"
+                        hackathons={sanitizedConfig.hackathons}
+                        googleAnalyticId={sanitizedConfig.googleAnalytics.id}
+                      />
+                    )}
                     {sanitizedConfig.publications.length !== 0 && (
                       <PublicationCard
                         loading={loading}
                         publications={sanitizedConfig.publications}
-                      />
-                    )}
-                    {sanitizedConfig.projects.external.projects.length !==
-                      0 && (
-                      <ExternalProjectCard
-                        loading={loading}
-                        header={sanitizedConfig.projects.external.header}
-                        externalProjects={
-                          sanitizedConfig.projects.external.projects
-                        }
-                        googleAnalyticId={sanitizedConfig.googleAnalytics.id}
                       />
                     )}
                     {sanitizedConfig.blog.display && (

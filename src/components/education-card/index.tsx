@@ -6,10 +6,18 @@ const ListItem = ({
   time,
   degree,
   institution,
+  gpa,
+  percentage,
+  grade,
+  location,
 }: {
   time: React.ReactNode;
   degree?: React.ReactNode;
   institution?: React.ReactNode;
+  gpa?: string;
+  percentage?: string;
+  grade?: string;
+  location?: string;
 }) => (
   <li className="mb-5 ml-4">
     <div
@@ -18,7 +26,31 @@ const ListItem = ({
     ></div>
     <div className="my-0.5 text-xs">{time}</div>
     <h3 className="font-semibold">{degree}</h3>
-    <div className="mb-4 font-normal">{institution}</div>
+    <div className="font-normal">{institution}</div>
+    {(gpa || percentage || grade || location) && (
+      <div className="flex flex-wrap gap-2 mt-2">
+        {gpa && (
+          <span className="badge badge-primary badge-outline text-xs">
+            GPA: {gpa}
+          </span>
+        )}
+        {percentage && (
+          <span className="badge badge-primary badge-outline text-xs">
+            Percentage: {percentage}%
+          </span>
+        )}
+        {grade && (
+          <span className="badge badge-primary badge-outline text-xs">
+            Grade: {grade}
+          </span>
+        )}
+        {location && (
+          <span className="badge badge-primary badge-outline text-xs">
+            📍 {location}
+          </span>
+        )}
+      </div>
+    )}
   </li>
 );
 
@@ -76,6 +108,10 @@ const EducationCard = ({
                     time={`${item.from} - ${item.to}`}
                     degree={item.degree}
                     institution={item.institution}
+                    gpa={item.gpa}
+                    percentage={item.percentage}
+                    grade={item.grade}
+                    location={item.location}
                   />
                 ))}
               </>

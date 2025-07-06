@@ -1,22 +1,32 @@
 import { Fragment } from 'react';
 import LazyImage from '../lazy-image';
 import { ga, skeleton } from '../../utils';
-import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
+import { SanitizedResearchExperience } from '../../interfaces/sanitized-config';
 
-const ExternalProjectCard = ({
-  externalProjects,
-  header,
+/**
+ * Renders a research experience card component.
+ *
+ * @param {Object} props - The props object.
+ * @param {boolean} props.loading - Whether the component is in a loading state.
+ * @param {string} props.header - The header text for the research experiences section.
+ * @param {SanitizedResearchExperience[]} props.researchExperiences - Array of research experiences.
+ * @param {string} props.googleAnalyticId - Google Analytics ID for tracking.
+ * @return {JSX.Element} The rendered research experience card component.
+ */
+const ResearchExperienceCard = ({
   loading,
+  header,
+  researchExperiences,
   googleAnalyticId,
 }: {
-  externalProjects: SanitizedExternalProject[];
-  header: string;
   loading: boolean;
+  header: string;
+  researchExperiences: SanitizedResearchExperience[];
   googleAnalyticId?: string;
 }) => {
   const renderSkeleton = () => {
     const array = [];
-    for (let index = 0; index < externalProjects.length; index++) {
+    for (let index = 0; index < researchExperiences.length; index++) {
       array.push(
         <div className="card shadow-lg compact bg-base-100" key={index}>
           <div className="p-8 h-full w-full">
@@ -62,12 +72,11 @@ const ExternalProjectCard = ({
         </div>,
       );
     }
-
     return array;
   };
 
-  const renderExternalProjects = () => {
-    return externalProjects.map((item, index) => (
+  const renderResearchExperiences = () => {
+    return researchExperiences.map((item, index) => (
       <a
         className="card shadow-lg compact bg-base-100 cursor-pointer"
         key={index}
@@ -77,7 +86,7 @@ const ExternalProjectCard = ({
 
           try {
             if (googleAnalyticId) {
-              ga.event('Click External Project', {
+              ga.event('Click Research Experience', {
                 post: item.title,
               });
             }
@@ -85,7 +94,9 @@ const ExternalProjectCard = ({
             console.error(error);
           }
 
-          window?.open(item.link, '_blank');
+          if (item.link) {
+            window?.open(item.link, '_blank');
+          }
         }}
       >
         <div className="p-8 h-full w-full">
@@ -111,21 +122,24 @@ const ExternalProjectCard = ({
                       </div>
                     </div>
                   )}
+                  <div className="mt-2 flex flex-col items-center gap-1">
+                    {item.institution && (
+                      <p className="text-base-content text-opacity-60 text-xs">
+                        {item.institution}
+                      </p>
+                    )}
+                    {item.supervisor && (
+                      <p className="text-base-content text-opacity-60 text-xs">
+                        Supervisor: {item.supervisor}
+                      </p>
+                    )}
+                    <p className="text-base-content text-opacity-60 text-xs">
+                      {item.from} - {item.to}
+                    </p>
+                  </div>
                   <p className="mt-2 text-base-content text-opacity-60 text-sm text-justify">
                     {item.description}
                   </p>
-                  {item.skills && item.skills.length > 0 && (
-                    <div className="mt-3 flex flex-wrap gap-1 justify-center">
-                      {item.skills.map((skill, skillIndex) => (
-                        <span
-                          key={skillIndex}
-                          className="badge badge-primary badge-outline text-xs"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
@@ -155,7 +169,7 @@ const ExternalProjectCard = ({
                 </div>
                 <div className="col-span-2">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {loading ? renderSkeleton() : renderExternalProjects()}
+                    {loading ? renderSkeleton() : renderResearchExperiences()}
                   </div>
                 </div>
               </div>
@@ -167,4 +181,4 @@ const ExternalProjectCard = ({
   );
 };
 
-export default ExternalProjectCard;
+export default ResearchExperienceCard; 

@@ -2,7 +2,7 @@ import { AiOutlineControl } from 'react-icons/ai';
 import { SanitizedThemeConfig } from '../../interfaces/sanitized-config';
 import { LOCAL_STORAGE_KEY_NAME } from '../../constants';
 import { skeleton } from '../../utils';
-import { MouseEvent } from 'react';
+import { MouseEvent, useRef } from 'react';
 
 /**
  * Renders a theme changer component.
@@ -25,6 +25,7 @@ const ThemeChanger = ({
   loading: boolean;
   themeConfig: SanitizedThemeConfig;
 }) => {
+
   const changeTheme = (
     e: MouseEvent<HTMLAnchorElement>,
     selectedTheme: string,
@@ -37,6 +38,14 @@ const ThemeChanger = ({
       localStorage.setItem(LOCAL_STORAGE_KEY_NAME, selectedTheme);
 
     setTheme(selectedTheme);
+    
+    // Close the dropdown by removing focus from the trigger button
+    setTimeout(() => {
+      const activeElement = document.activeElement as HTMLElement;
+      if (activeElement && activeElement.blur) {
+        activeElement.blur();
+      }
+    }, 100);
   };
 
   return (

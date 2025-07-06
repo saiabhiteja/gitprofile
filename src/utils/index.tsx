@@ -52,7 +52,13 @@ export const getSanitizedConfig = (
         },
         external: {
           header: config?.projects?.external?.header || 'My Projects',
-          projects: config?.projects?.external?.projects || [],
+          projects: config?.projects?.external?.projects?.map(project => ({
+            title: project.title,
+            description: project.description,
+            imageUrl: project.imageUrl,
+            link: project.link,
+            skills: project.skills,
+          })) || [],
         },
       },
       seo: {
@@ -81,6 +87,8 @@ export const getSanitizedConfig = (
         skype: config?.social?.skype,
         telegram: config?.social?.telegram,
         researchGate: config?.social?.researchGate,
+        leetcode: config?.social?.leetcode,
+        geeksforgeeks: config?.social?.geeksforgeeks,
       },
       resume: {
         fileUrl: config?.resume?.fileUrl || '',
@@ -93,7 +101,17 @@ export const getSanitizedConfig = (
             experience.position ||
             experience.from ||
             experience.to,
-        ) || [],
+        ).map(experience => ({
+          company: experience.company,
+          position: experience.position,
+          from: experience.from,
+          to: experience.to,
+          companyLink: experience.companyLink,
+          description: experience.description,
+          technologies: experience.technologies,
+          achievements: experience.achievements,
+          location: experience.location,
+        })) || [],
       certifications:
         config?.certifications?.filter(
           (certification) =>
@@ -102,8 +120,26 @@ export const getSanitizedConfig = (
       educations:
         config?.educations?.filter(
           (item) => item.institution || item.degree || item.from || item.to,
-        ) || [],
+        ).map(education => ({
+          institution: education.institution,
+          degree: education.degree,
+          from: education.from,
+          to: education.to,
+          gpa: education.gpa,
+          percentage: education.percentage,
+          grade: education.grade,
+          location: education.location,
+        })) || [],
       publications: config?.publications?.filter((item) => item.title) || [],
+      researchExperiences: config?.researchExperiences?.filter((item) => item.title) || [],
+      hackathons: config?.hackathons?.filter((item) => item.title) || [],
+      contact: {
+        email: config?.contact?.email,
+        phone: config?.contact?.phone,
+        location: config?.contact?.location,
+        linkedin: config?.contact?.linkedin,
+        preferredContact: config?.contact?.preferredContact,
+      },
       googleAnalytics: {
         id: config?.googleAnalytics?.id,
       },

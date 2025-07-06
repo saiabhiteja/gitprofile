@@ -24,6 +24,7 @@ export interface SanitizedExternalProject {
   description?: string;
   imageUrl?: string;
   link: string;
+  skills?: string[];
 }
 
 export interface SanitizedExternalProjects {
@@ -63,6 +64,8 @@ export interface SanitizedSocial {
   telegram?: string;
   phone?: string;
   email?: string;
+  leetcode?: string;
+  geeksforgeeks?: string;
 }
 
 export interface SanitizedResume {
@@ -75,6 +78,10 @@ export interface SanitizedExperience {
   from: string;
   to: string;
   companyLink?: string;
+  description?: string;
+  technologies?: string[];
+  achievements?: string[];
+  location?: string;
 }
 
 export interface SanitizedCertification {
@@ -89,6 +96,10 @@ export interface SanitizedEducation {
   degree?: string;
   from: string;
   to: string;
+  gpa?: string;
+  percentage?: string;
+  grade?: string;
+  location?: string;
 }
 
 export interface SanitizedPublication {
@@ -98,6 +109,35 @@ export interface SanitizedPublication {
   authors?: string;
   link?: string;
   description?: string;
+}
+
+export interface SanitizedResearchExperience {
+  title: string;
+  institution?: string;
+  supervisor?: string;
+  from: string;
+  to: string;
+  description?: string;
+  link?: string;
+  imageUrl?: string;
+}
+
+export interface SanitizedHackathon {
+  title: string;
+  organizer?: string;
+  position?: string;
+  date: string;
+  description?: string;
+  link?: string;
+  imageUrl?: string;
+}
+
+export interface SanitizedContact {
+  email?: string;
+  phone?: string;
+  location?: string;
+  linkedin?: string;
+  preferredContact?: string[];
 }
 
 export interface SanitizedGoogleAnalytics {
@@ -146,6 +186,9 @@ export interface SanitizedConfig {
   educations: Array<SanitizedEducation>;
   certifications: Array<SanitizedCertification>;
   publications: Array<SanitizedPublication>;
+  researchExperiences: Array<SanitizedResearchExperience>;
+  hackathons: Array<SanitizedHackathon>;
+  contact: SanitizedContact;
   googleAnalytics: SanitizedGoogleAnalytics;
   hotjar: SanitizedHotjar;
   blog: SanitizedBlog;
