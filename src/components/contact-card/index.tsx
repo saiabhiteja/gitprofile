@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaClock, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
 
 interface ContactCardProps {
   email?: string;
