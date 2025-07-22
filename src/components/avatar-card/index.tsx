@@ -105,7 +105,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
                 download
                 rel="noreferrer"
               >
-                Download Resume
+                Veiw Resume
               </a>
             ))}
           {(email || linkedin) &&

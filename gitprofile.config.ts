@@ -41,22 +41,22 @@ const CONFIG = {
       // To hide the `External Projects` section, keep it empty.
       projects: [
         {
-          title: 'Subscription Management System',
-          description:
-            'A comprehensive web application that helps users track, manage, and optimize their recurring subscriptions. Features include automated billing reminders, spending analytics, subscription categorization, and cost optimization recommendations. The system provides real-time notifications and an intuitive dashboard for better financial management and spending control.',
-          imageUrl:
-            'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center',
-          link: 'https://github.com/saiabhiteja/subscription-management',
-          skills: ['React', 'Node.js', 'MongoDB', 'Express.js', 'JavaScript', 'CSS3', 'HTML5'],
-        },
-        {
           title: 'Six Degrees of Spotify Music',
           description:
             'An interactive web application that demonstrates the "Six Degrees of Separation" concept applied to music artists. Users can explore connections between musicians through collaboration chains. Features include artist search, connection visualization, and interactive graphs showing how artists are linked through collaborations and musical partnerships.',
           imageUrl:
             'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop&crop=center',
           link: 'https://github.com/saiabhiteja/six-degrees-spotify-music',
-          skills: ['React', 'JavaScript', 'Spotify API', 'Graph Theory', 'CSS3', 'HTML5', 'D3.js'],
+          skills: ['Spotify API', 'Neo4j', 'spring boot','java'],
+        },
+        {
+          title: 'Subscription Management System',
+          description:
+            'A comprehensive web application that helps users track, manage, and optimize their recurring subscriptions. Features include automated billing reminders, spending analytics, subscription categorization, and cost optimization recommendations. The system provides real-time notifications and an intuitive dashboard for better financial management and spending control.',
+          imageUrl:
+            'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center',
+          link: 'https://github.com/saiabhiteja/subscription-management',
+          skills: ['Node.js', 'MongoDB', 'Express.js', 'JavaScript', 'CSS3', 'HTML5'],
         },
         {
           title: 'RAG Chatbot',
@@ -65,7 +65,7 @@ const CONFIG = {
           imageUrl:
             'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&crop=center',
           link: 'https://github.com/saiabhiteja/rag-based-chatbot',
-          skills: ['Python', 'LangChain', 'OpenAI API', 'Vector Databases', 'NLP', 'Machine Learning', 'FastAPI'],
+          skills: ['Python', 'LangChain', 'OpenAI API', 'pinecone', 'streamlit'],
         },
         {
           title: 'iPhone 15 Pro Website Clone',
@@ -110,7 +110,7 @@ const CONFIG = {
   },
   resume: {
     fileUrl:
-      'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Empty fileUrl will hide the `Download Resume` button.
+      'https://drive.google.com/file/d/14seZlOWXdpPCvWBFL55erir5RksyJjZL/view', // Empty fileUrl will hide the `Download Resume` button.
   },
   skills: [
     // Programming Languages
@@ -210,7 +210,7 @@ const CONFIG = {
     },
     {
       company: 'MAQ Software',
-      position: 'Associate Software Engineer',
+      position: 'Associate Software Engineer (Internship)',
       from: 'May 2022',
       to: 'July 2022',
       companyLink: 'https://maqsoftware.com/',
