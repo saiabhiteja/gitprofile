@@ -145,10 +145,23 @@ const CONFIG = {
   ],
   experiences: [
     {
+      company: 'Uber',
+      position: 'Software Engineer-2',
+      from: 'Sept-2025',
+      to: 'Present',
+      companyLink: 'https://www.uber.com/in/en/',
+      location: 'Bangalore, India',
+      description:  '',
+      technologies: [
+        
+      ],
+      achievements: []
+    },
+    {
       company: 'Cloudera',
       position: 'Software Engineer',
       from: 'July 2023',
-      to: 'Present',
+      to: 'August-2025',
       companyLink: 'https://www.cloudera.com/',
       location: 'Bangalore, India',
       description: 'Built an end-to-end Platform-as-a-Service (PaaS) Trials system for Cloudera\'s Public Cloud, allowing users to explore product capabilities through a simple sign-up flow. Designed and developed Admin Console UI and backend REST APIs for complete lifecycle management of cloud trials. Architected and implemented Cadence workflows to automate cloud resource provisioning, trial lifecycle management, and cleanup operations. Integrated Cloudera Data Engineering (CDE) and Cloudera AI into the Trials platform by working closely with cross-functional product and infrastructure teams. Developed the CDP Landing Page UI to offer a unified experience across Cloudera\'s Hybrid Cloud ecosystem. Improved internal CDP CLI tools to enhance performance and interoperability across multiple system components. Configured monitoring and alerting systems using DataDog and Prometheus for real-time visibility, error detection, and reduced incident resolution time.',
